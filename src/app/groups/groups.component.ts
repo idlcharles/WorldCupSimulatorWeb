@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {moveItemInArray } from'@angular/cdk/drag-drop';
 import { Team } from '../Models/Team';
 
@@ -9,7 +9,10 @@ import { Team } from '../Models/Team';
 })
 export class GroupsComponent implements OnInit{
 
-  constructor(){}
+  @Output()
+  moveTeam = new EventEmitter<any>();
+
+  @Input()
   groups!: Team[][];
 
   ngOnInit(): void {
@@ -29,6 +32,7 @@ export class GroupsComponent implements OnInit{
   }
   drop(event: any, index: number){
     moveItemInArray(this.groups[index], event.previousIndex, event.currentIndex)
+    this.moveTeam.emit(this.groups)
   }
 }
 

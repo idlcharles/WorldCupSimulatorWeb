@@ -4,6 +4,7 @@ import {DragDropModule } from '@angular/cdk/drag-drop'
 
 import { AppComponent } from './app.component';
 import { GroupsComponent } from './groups/groups.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { GroupsComponent } from './groups/groups.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     DragDropModule
   ],
   providers: [],
